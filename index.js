@@ -4,7 +4,7 @@
  * Copyright(c) 2017 Bradford Knowlton
  * MIT Licensed
  *
- * Version 1.1.4
+ * Version 1.1.5
  */
 
 'use strict';
@@ -15,7 +15,7 @@ const { Client } = require('pg');
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
-  // ssl: true,
+  ssl: true,
 });
 
 client.connect(function(err, res){
@@ -29,9 +29,13 @@ client.connect(function(err, res){
 // default age for active cache entries
 const cacheLifetime = '6 hours';
 
+/**
+* pgCacheDb
+* placeholder function
+*
+*/
 exports.pgCacheDb = function(){
-	
-	
+		
 };
 
 /**
@@ -90,12 +94,15 @@ exports.setCache = function(key, data, callback){
 *
 * @param   {Function} callback function name for callback
 */
-exports.purgeCache = function(callback){
+exports.purgeCache = function(callback){	
+	// not ported yet
+	/*
 	cacheDb.serialize(function() { 		
 		cacheDb.run('DELETE FROM `cache`', function(){
 			callback();	
 		});
 	});
+*/
 };
 
 /**
@@ -106,11 +113,14 @@ exports.purgeCache = function(callback){
 * @param   {Function} callback function name for callback
 */
 exports.purgeKey = function(key,callback){
+	// not ported yet
+	/*
 	cacheDb.serialize(function() { 		
 		cacheDb.run('DELETE FROM `cache` WHERE `key` == ?', key, function(){
 			callback();	
 		});
 	});
+*/
 };
 
 /**
@@ -120,11 +130,14 @@ exports.purgeKey = function(key,callback){
 * @param   {Function} callback function name for callback
 */
 exports.cleanCache = function(callback){
+	// not ported yet	
+	/*
 	cacheDb.serialize(function() { 		
 		cacheDb.run('DELETE FROM `cache` WHERE date_updated < datetime("now", ?)', cacheLifetime, function(){
 			callback();	
 		});
 	});
+*/
 };
 
 
@@ -135,6 +148,8 @@ exports.cleanCache = function(callback){
 * @param   {Function} callback function name for callback
 */
 exports.getKeys = function(callback){
+	// not ported yet	
+/*
 	var keys = [];
 	
 	cacheDb.serialize(function() {	
@@ -149,6 +164,7 @@ exports.getKeys = function(callback){
 			callback(err,keys);
 		});
 	});
+*/
 };
 
 /**
@@ -158,6 +174,9 @@ exports.getKeys = function(callback){
 * @param   {Function} callback function name for callback
 */
 exports.getActiveKeys = function(callback){
+	// not ported yet
+/*
+
 	var keys = [];
 	
 	cacheDb.serialize(function() {	
@@ -172,4 +191,5 @@ exports.getActiveKeys = function(callback){
 			callback(err,keys);
 		});
 	});
+*/
 };
